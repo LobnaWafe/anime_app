@@ -2,6 +2,8 @@ import 'package:anime_app/cach/cach_helper.dart';
 import 'package:anime_app/features/authentication/data/models/auth_model.dart';
 import 'package:anime_app/features/authentication/presentation/views/signin_view.dart';
 import 'package:anime_app/features/authentication/presentation/views/signup_view.dart';
+import 'package:anime_app/features/home/data/models/anime_model/anime_model.dart';
+import 'package:anime_app/features/home/presentation/views/anime_details_view.dart';
 import 'package:anime_app/features/home/presentation/views/home_view.dart';
 import 'package:anime_app/features/profile/views/edit_profile_name.dart';
 import 'package:anime_app/features/profile/views/profile_view.dart';
@@ -12,6 +14,7 @@ abstract class AppRouter {
   static final kProfile = "/profile_view";
   static final kHomeView="/home_view";
   static final kNameEditView="/name_edit_view";
+  static final kAnimeDetailsView ="/anime_details_view";
 
   static final router = GoRouter(
      initialLocation: CacheHelper.sharedPreferences.getString("user") == null?
@@ -37,7 +40,11 @@ abstract class AppRouter {
         path: kNameEditView,
         builder: (context, state) => EditProfileName(authModel:state.extra as AuthModel),
       ),
-
+      
+   GoRoute(
+        path: kAnimeDetailsView,
+        builder: (context, state) => AnimeDetailsView(animeModel:state.extra as AnimeModel),
+      ),
     ],
   );
 }

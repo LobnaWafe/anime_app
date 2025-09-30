@@ -22,7 +22,7 @@ class AnimeModel extends Equatable {
 	final String? title;
 	final String? titleEnglish;
 	final String? titleJapanese;
-	final List<String>? titleSynonyms;
+	final List<dynamic>? titleSynonyms;
 	final String? type;
 	final String? source;
 	final int? episodes;
@@ -105,7 +105,7 @@ class AnimeModel extends Equatable {
 				title: json['title'] as String?,
 				titleEnglish: json['title_english'] as String?,
 				titleJapanese: json['title_japanese'] as String?,
-				titleSynonyms: json['title_synonyms'] as List<String>?,
+				titleSynonyms: json['title_synonyms'] as List<dynamic>?,
 				type: json['type'] as String?,
 				source: json['source'] as String?,
 				episodes: json['episodes'] as int?,
