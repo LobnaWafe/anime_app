@@ -60,7 +60,7 @@ class _CharactersViewBodyState extends State<CharactersViewBody> {
           print(state.errorMsg);
           return Center(child: Text("there was an error , please try again"));
         } else {
-          return Center(child: CircularProgressIndicator());
+          return Center(child: CircularProgressIndicator(color: Colors.red,));
         }
       },
     );

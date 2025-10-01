@@ -51,6 +51,25 @@ class HomeRepoImp implements HomeRepo{
 
   
   }
+  
+  @override
+  Future<Either<Failure, List<AnimeModel>>> getSearchAnime({required String animeName}) async{
+     try {
+  var data = await api.get(endPoint: "anime?q=$animeName");
+  List<AnimeModel>searchAnimeList= [];
 
+  for(var item in data["data"]){
+   searchAnimeList.add(AnimeModel.fromJson(item));
+  }
+  //print("home repo animes :$animes");
+  return right(searchAnimeList);
+
+} on DioException catch (e) {
+  return left(ServerFailure.dioException(e));
+} catch (e){
+  return left(ServerFailure(e.toString()));
+}
+
+  }
 
 }

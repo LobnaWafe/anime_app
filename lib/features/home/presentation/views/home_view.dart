@@ -4,7 +4,7 @@ import 'package:anime_app/features/home/presentation/view_models/genres_anime_cu
 import 'package:anime_app/features/home/presentation/widgets/home_view_body.dart';
 
 import 'package:anime_app/features/profile/views/profile_view.dart';
-import 'package:anime_app/features/search/views/search_view.dart';
+import 'package:anime_app/features/search/presentation/views/search_view.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

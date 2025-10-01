@@ -95,7 +95,7 @@ class ListAnimeCategories extends StatelessWidget {
         } else if (state is GenresAnimeFailure) {
           return Center(child: Text("Oops!, there is an error"));
         } else {
-          return Center(child: CircularProgressIndicator());
+          return Center(child: CircularProgressIndicator(color: Colors.red,));
         }
       },
     );
