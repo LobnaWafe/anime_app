@@ -15,7 +15,22 @@ class HomeViewBody extends StatelessWidget {
       child: RefreshIndicator(
         color: Colors.red, // لون الـ indicator
         onRefresh: () async {
-          // هنا بتندهى الـ cubit من تانى عشان يجيب الداتا
+        final value =  BlocProvider.of<GenresAnimeCubit>(context).refreshHomeView();
+
+          
+             
+        if(value == 0){
+          BlocProvider.of<GenresAnimeCubit>(context).getGenresAnime(order:"favorites" ,sort:"desc" );
+         
+        }
+        else if(value == 1){
+           BlocProvider.of<GenresAnimeCubit>(context).getGenresAnime(order: "start_date",sort: "desc");
+       
+        }
+        else{
+           BlocProvider.of<GenresAnimeCubit>(context).getGenresAnime(order: "start_date",sort: "asc");
+        }
+
           BlocProvider.of<GenresAnimeCubit>(context).getGenresAnime(order:"favorites" ,sort:"desc" );
         },
         child: CustomScrollView(
