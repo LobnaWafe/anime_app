@@ -31,7 +31,7 @@ class HomeViewBody extends StatelessWidget {
            BlocProvider.of<GenresAnimeCubit>(context).getGenresAnime(order: "start_date",sort: "asc");
         }
 
-          BlocProvider.of<GenresAnimeCubit>(context).getGenresAnime(order:"favorites" ,sort:"desc" );
+          
         },
         child: CustomScrollView(
           slivers: [

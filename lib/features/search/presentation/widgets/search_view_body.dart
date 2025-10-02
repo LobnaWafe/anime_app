@@ -1,3 +1,4 @@
+import 'package:anime_app/cach/cach_helper.dart';
 import 'package:anime_app/core/utils/app_router.dart';
 import 'package:anime_app/features/search/presentation/widgets/custom_search_text_field.dart';
 import 'package:anime_app/features/search/presentation/widgets/search_item.dart';
@@ -37,7 +38,13 @@ class SearchAnimeList extends StatelessWidget {
             padding: const EdgeInsets.symmetric(vertical: 5),
             child: GestureDetector(
               onTap: (){
-                GoRouter.of(context).push(AppRouter.kAnimeDetailsView,extra:state.listAnimeModel[index] );
+                    final ids = CacheHelper.getFavorites();
+                bool check = ids.contains(state.listAnimeModel[index].malId);
+
+                GoRouter.of(context).push(
+                  AppRouter.kAnimeDetailsView,
+                  extra: {"anime": state.listAnimeModel[index], "check": check},
+                );
               },
               child: SearchItem(animeModel: state.listAnimeModel[index],)),
           );
