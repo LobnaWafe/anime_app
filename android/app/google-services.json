@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "235586402217",
+    "project_id": "anime-app-f6bbc",
+    "storage_bucket": "anime-app-f6bbc.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:235586402217:android:a319ccb23738a554dd76b8",
+        "android_client_info": {
+          "package_name": "com.example.anime_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDTp5QYjudGXWvsYdTlbaEYJE6Ge2n7BPo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

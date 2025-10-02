@@ -13,11 +13,11 @@ class GeneralButton extends StatefulWidget {
 }
 
 class _GeneralButtonState extends State<GeneralButton> {
- final List<String>order=["newest","oldest","favorites"];
+ final List<String>order=["favorites","newest","oldest",];
 
  int buttonNumber=0;
 
- String buttonName="newest";
+ String buttonName="favorites";
 
   @override
   Widget build(BuildContext context) {
@@ -28,13 +28,15 @@ class _GeneralButtonState extends State<GeneralButton> {
         buttonName = order[(1+ buttonNumber)%3];
         buttonNumber =(1+ buttonNumber)%3;
         if(buttonNumber == 0){
-          BlocProvider.of<GenresAnimeCubit>(context).getGenresAnime(order: "start_date",sort: "desc");
+          BlocProvider.of<GenresAnimeCubit>(context).getGenresAnime(order:"favorites" ,sort:"desc" );
+         
         }
         else if(buttonNumber == 1){
-        BlocProvider.of<GenresAnimeCubit>(context).getGenresAnime(order: "start_date",sort: "asc");
+           BlocProvider.of<GenresAnimeCubit>(context).getGenresAnime(order: "start_date",sort: "desc");
+       
         }
         else{
-          BlocProvider.of<GenresAnimeCubit>(context).getGenresAnime(order:"favorites" ,sort:"desc" );
+           BlocProvider.of<GenresAnimeCubit>(context).getGenresAnime(order: "start_date",sort: "asc");
         }
         setState(() {
           

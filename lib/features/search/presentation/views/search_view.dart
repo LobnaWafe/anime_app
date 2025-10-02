@@ -1,4 +1,4 @@
-import 'package:anime_app/cach/functions/api_service.dart';
+import 'package:anime_app/core/functions/api_service.dart';
 import 'package:anime_app/features/home/repos/home_repo_imp.dart';
 import 'package:anime_app/features/search/presentation/widgets/search_view_body.dart';
 import 'package:anime_app/features/search/view_models/search_cubit/search_cubit.dart';

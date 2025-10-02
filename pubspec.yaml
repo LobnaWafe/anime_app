@@ -44,6 +44,8 @@ dependencies:
   get_it: ^8.2.0
   image_picker: ^1.2.0
   cached_network_image: ^3.4.1
+  firebase_core: ^4.1.1
+  cloud_firestore: ^6.0.2
 
 dev_dependencies:
   flutter_test:

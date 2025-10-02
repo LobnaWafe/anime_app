@@ -1,4 +1,5 @@
-import 'package:anime_app/features/favorit/views/favorit_view.dart';
+import 'package:anime_app/features/favorit/presentation/view_models/favorite_animes_cubit/favorite_animes_cubit.dart';
+import 'package:anime_app/features/favorit/presentation/views/favorit_view.dart';
 import 'package:anime_app/features/home/presentation/view_models/genres_anime_cubit/genres_anime_cubit.dart';
 
 import 'package:anime_app/features/home/presentation/widgets/home_view_body.dart';
@@ -32,7 +33,8 @@ class _HomeViewState extends State<HomeView> {
 
 @override
   void initState() {
-    BlocProvider.of<GenresAnimeCubit>(context).getGenresAnime(order: "start_date",sort: "desc");
+    BlocProvider.of<GenresAnimeCubit>(context).getGenresAnime(order:"favorites" ,sort:"desc" );
+    BlocProvider.of<FavoriteAnimesCubit>(context).getFavAnimes();
     super.initState();
   }
  

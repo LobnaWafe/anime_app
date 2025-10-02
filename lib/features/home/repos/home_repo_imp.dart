@@ -1,4 +1,4 @@
-import 'package:anime_app/cach/functions/api_service.dart';
+import 'package:anime_app/core/functions/api_service.dart';
 import 'package:anime_app/core/errors/failure.dart';
 import 'package:anime_app/features/home/data/models/anime_model/anime_model.dart';
 import 'package:anime_app/features/home/data/models/character_model/character_model.dart';

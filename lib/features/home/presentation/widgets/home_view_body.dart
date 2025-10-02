@@ -12,24 +12,32 @@ class HomeViewBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
-      child: CustomScrollView(
-        slivers: [
-          SliverToBoxAdapter(
-            child: SizedBox(height: 180, child: ImageSlider()),
-          ),
+      child: RefreshIndicator(
+        color: Colors.red, // لون الـ indicator
+        onRefresh: () async {
+          // هنا بتندهى الـ cubit من تانى عشان يجيب الداتا
+          BlocProvider.of<GenresAnimeCubit>(context).getGenresAnime(order:"favorites" ,sort:"desc" );
+        },
+        child: CustomScrollView(
+          slivers: [
+            SliverToBoxAdapter(
+              child: SizedBox(height: 180, child: ImageSlider()),
+            ),
 
-          SliverToBoxAdapter(child: SizedBox(height: 10)),
+            SliverToBoxAdapter(child: SizedBox(height: 10)),
 
-          SliverToBoxAdapter(child: GeneralButton()),
+            SliverToBoxAdapter(child: GeneralButton()),
 
-          SliverToBoxAdapter(child: SizedBox(height: 20)),
+            SliverToBoxAdapter(child: SizedBox(height: 20)),
 
-          SliverToBoxAdapter(child: ListAnimeCategories()),
-        ],
+            SliverToBoxAdapter(child: ListAnimeCategories()),
+          ],
+        ),
       ),
     );
   }
 }
+
 
 class ListAnimeCategories extends StatelessWidget {
   const ListAnimeCategories({super.key});
@@ -37,7 +45,11 @@ class ListAnimeCategories extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<GenresAnimeCubit, GenresAnimeState>(
-      listener: (context, state) {},
+      listener: (context, state) {
+        if(state is GenresAnimeFailure){
+          snackBarMethod(context, state.errorMsg);
+        }
+      },
       builder: (context, state) {
         if (state is GenresAnimeSuccess) {
           return Column(
@@ -93,11 +105,20 @@ class ListAnimeCategories extends StatelessWidget {
             ],
           );
         } else if (state is GenresAnimeFailure) {
+        // snackBarMethod(context, state.errorMsg);
+
           return Center(child: Text("Oops!, there is an error"));
         } else {
           return Center(child: CircularProgressIndicator(color: Colors.red,));
         }
       },
+    );
+  }
+    void snackBarMethod(BuildContext context,String message) {
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        content: Text(message),
+      ),
     );
   }
 }

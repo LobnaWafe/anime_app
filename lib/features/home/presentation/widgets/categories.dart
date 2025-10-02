@@ -1,4 +1,5 @@
 // categories.dart
+import 'package:anime_app/cach/cach_helper.dart';
 import 'package:anime_app/core/utils/app_router.dart';
 import 'package:anime_app/features/home/data/models/anime_model/anime_model.dart';
 import 'package:flutter/material.dart';
@@ -23,7 +24,13 @@ class Categories extends StatelessWidget {
             padding: const EdgeInsets.symmetric(horizontal: 10),
             child: GestureDetector(
               onTap: () {
-                GoRouter.of(context).push(AppRouter.kAnimeDetailsView,extra:animeList[index] );
+                final ids = CacheHelper.getFavorites();
+                bool check = ids.contains(animeList[index].malId);
+
+                GoRouter.of(context).push(
+                  AppRouter.kAnimeDetailsView,
+                  extra: {"anime": animeList[index], "check": check},
+                );
               },
               child: Container(
                 width: 110,
@@ -32,7 +39,8 @@ class Categories extends StatelessWidget {
                   image: DecorationImage(
                     image: imageUrl != null
                         ? NetworkImage(imageUrl)
-                        : const AssetImage("assets/images/null_image.webp") as ImageProvider,
+                        : const AssetImage("assets/images/null_image.webp")
+                              as ImageProvider,
                     fit: BoxFit.cover,
                   ),
                 ),

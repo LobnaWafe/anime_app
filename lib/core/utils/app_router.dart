@@ -12,14 +12,14 @@ import 'package:go_router/go_router.dart';
 abstract class AppRouter {
   static final kSignUpView = "/signup_view";
   static final kProfile = "/profile_view";
-  static final kHomeView="/home_view";
-  static final kNameEditView="/name_edit_view";
-  static final kAnimeDetailsView ="/anime_details_view";
+  static final kHomeView = "/home_view";
+  static final kNameEditView = "/name_edit_view";
+  static final kAnimeDetailsView = "/anime_details_view";
 
   static final router = GoRouter(
-     initialLocation: CacheHelper.sharedPreferences.getString("user") == null?
-     "/":
-     kHomeView,
+    initialLocation: CacheHelper.sharedPreferences.getString("user") == null
+        ? "/"
+        : kHomeView,
 
     routes: [
       GoRoute(path: '/', builder: (context, state) => const SigninView()),
@@ -27,23 +27,23 @@ abstract class AppRouter {
         path: kSignUpView,
         builder: (context, state) => const SignupView(),
       ),
+      GoRoute(path: kProfile, builder: (context, state) => ProfileView()),
+      GoRoute(path: kHomeView, builder: (context, state) => const HomeView()),
       GoRoute(
-        path: kProfile,
-        builder: (context, state) =>
-            ProfileView(),
-      ),
-       GoRoute(
-        path: kHomeView,
-        builder: (context, state) => const HomeView(),
-      ),
-  GoRoute(
         path: kNameEditView,
-        builder: (context, state) => EditProfileName(authModel:state.extra as AuthModel),
+        builder: (context, state) =>
+            EditProfileName(authModel: state.extra as AuthModel),
       ),
-      
-   GoRoute(
+
+      GoRoute(
         path: kAnimeDetailsView,
-        builder: (context, state) => AnimeDetailsView(animeModel:state.extra as AnimeModel),
+        builder: (context, state) {
+          final data = state.extra as Map<String, dynamic>;
+          return AnimeDetailsView(
+            animeModel: data["anime"] as AnimeModel,
+            check: data["check"] as bool,
+          );
+        },
       ),
     ],
   );

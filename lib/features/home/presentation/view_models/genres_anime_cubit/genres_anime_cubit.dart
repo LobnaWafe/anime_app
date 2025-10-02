@@ -19,6 +19,7 @@ class GenresAnimeCubit extends Cubit<GenresAnimeState> {
 
    for(var i in genresNumbers){
   var data = await homeRepo.getAnime(genresNumber: i,order: order,sort: sort);
+  await Future.delayed(const Duration(milliseconds:300 ));
    data.fold((failure){
     check=true;
     _failure = failure.errorMsg ;
