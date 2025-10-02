@@ -6,11 +6,12 @@ class CustomFormTextField extends StatelessWidget {
     super.key,
     required this.hintText,
     required this.textController,
-    required this.check,
+    required this.check, required this.obscureText,
   });
   final String hintText;
   final TextEditingController textController;
   final int check;
+  final bool obscureText;
   @override
   Widget build(BuildContext context) {
     return TextFormField(
@@ -25,6 +26,7 @@ class CustomFormTextField extends StatelessWidget {
           return null;
         }
       },
+      obscureText:obscureText ,
       controller: textController,
       decoration: InputDecoration(
         contentPadding: EdgeInsets.only(top: 0, bottom: 0, left: 10),

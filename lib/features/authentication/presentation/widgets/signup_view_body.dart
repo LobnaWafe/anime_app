@@ -48,24 +48,28 @@ class _SignupViewBodyState extends State<SignupViewBody> {
             PickImageDemo(),
             const SizedBox(height: 15),
              CustomFormTextField(
+              obscureText: false,
               hintText: "First Name",
               textController: fName,
               check: 2,
             ),
             const SizedBox(height: 25),
              CustomFormTextField(
+              obscureText: false,
               hintText: "Second Name",
               textController: sName,
               check: 2,
             ),
             const SizedBox(height: 25),
             CustomFormTextField(
+              obscureText: false,
               hintText: "Email",
               textController: email,
               check: 0,
             ),
             const SizedBox(height: 25),
             CustomFormTextField(
+              obscureText: true,
               hintText: "Password",
               textController: password,
               check: 1,

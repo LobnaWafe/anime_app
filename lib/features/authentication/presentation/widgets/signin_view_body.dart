@@ -41,12 +41,14 @@ class _SigninViewBodyState extends State<SigninViewBody> {
             const Text("Sign In", style: Styles.textStyle30),
             const SizedBox(height: 30),
             CustomFormTextField(
+              obscureText: false,
               hintText: "Email",
               textController: email,
               check: 0,
             ),
             const SizedBox(height: 25),
             CustomFormTextField(
+              obscureText: true,
               hintText: "Password",
               textController: password,
               check: 1,
